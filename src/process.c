@@ -29,7 +29,7 @@ void display_processes() {
 
 int allocate_process_memory(int process_id) {
     int size = processes[process_id - 1].size;
-    int start_index = allocate_memory(size);
+    int start_index = allocate_memory(size, process_count);
 
     if (start_index != -1) {
         processes[process_id - 1].start_index = start_index;

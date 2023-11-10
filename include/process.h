@@ -13,5 +13,6 @@ int create_process(int size);
 void display_processes();
 int allocate_process_memory(int process_id);
 void deallocate_process_memory(int process_id);
+void delete_process(int process_id);
 
 #endif  // PROCESS_H

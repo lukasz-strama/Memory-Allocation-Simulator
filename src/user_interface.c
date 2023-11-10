@@ -9,6 +9,7 @@ void display_menu() {
     printf("2. Display Processes\n");
     printf("3. Allocate Memory for Process\n");
     printf("4. Deallocate Memory for Process\n");
+    printf("5. Delete Process\n");
     printf("0. Exit\n");
 }
 
@@ -35,6 +36,9 @@ void simulation_loop() {
                 break;
             case 4:
                 deallocate_memory_for_process();
+                break;
+            case 5:
+                delete_process_option();
                 break;
             case 0:
                 printf("Exiting the simulator. Goodbye!\n");
@@ -72,6 +76,19 @@ void deallocate_memory_for_process() {
     if (process_id > 0 && process_id <= MAX_PROCESSES) {
         deallocate_process_memory(process_id);
         printf("Memory deallocated for process ID %d.\n", process_id);
+    } else {
+        printf("Invalid process ID. Please enter a valid ID.\n");
+    }
+}
+
+void delete_process_option() {
+    int process_id;
+    printf("Enter the ID of the process to delete: ");
+    scanf("%d", &process_id);
+
+    if (process_id > 0 && process_id <= MAX_PROCESSES) {
+        delete_process(process_id);
+        printf("Process %d deleted.\n", process_id);
     } else {
         printf("Invalid process ID. Please enter a valid ID.\n");
     }

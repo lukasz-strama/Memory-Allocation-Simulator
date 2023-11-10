@@ -21,9 +21,11 @@ int create_process(int size) {
 void display_processes() {
     printf("Processes:\n");
     for (int i = 0; i < process_count; i++) {
-        printf("ID: %d, Size: %d, Allocated: %s\n",
+        if(processes[i].id != 0) {
+            printf("ID: %d, Size: %d, Allocated: %s\n",
                processes[i].id, processes[i].size,
                processes[i].start_index != -1 ? "Yes" : "No");
+        }
     }
 }
 
@@ -42,5 +44,18 @@ void deallocate_process_memory(int process_id) {
     int start_index = processes[process_id - 1].start_index;
     int size = processes[process_id - 1].size;
     deallocate_memory(start_index, size);
+    processes[process_id - 1].start_index = -1;
+}
+
+void delete_process(int process_id) {
+    int start_index = processes[process_id - 1].start_index;
+    int size = processes[process_id - 1].size;
+
+    if (start_index != -1) {
+        deallocate_memory(start_index, size);
+    }
+
+    processes[process_id - 1].id = 0;
+    processes[process_id - 1].size = 0;
     processes[process_id - 1].start_index = -1;
 }

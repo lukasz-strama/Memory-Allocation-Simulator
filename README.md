@@ -39,6 +39,17 @@ To build the project, make sure you have a C compiler installed. Navigate to the
 make
 ```
 
+If you're using VS Code you might want to add:
+
+```json
+"includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include"
+            ]
+```
+
+into your `.vscode/c_cpp_properties.json` for correct syntax. 
+
 This will compile the source files and create the executable.
 
 ## License
